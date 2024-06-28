@@ -10,8 +10,6 @@ public class ConsoleRenderer {
     public static void render(List<String> screen){
         System.out.print("\033[H\033[2J");
         System.out.flush();
-        screen.forEach(line -> {
-            System.out.println(line);
-        });
+        screen.forEach(System.out::println);
     }
 }
