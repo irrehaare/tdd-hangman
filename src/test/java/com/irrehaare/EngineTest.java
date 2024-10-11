@@ -17,7 +17,20 @@ class EngineTest {
     }
 
     @Test
-    void givenThePasswordIsGuessedShouldReturnWinScreen(){
+    void givenTheInputIsThePasswordEndTheGame(){
+        GameState intitialGameState = new GameState(false);
+        GameState gameState = Engine.stateUpdate(intitialGameState, intitialGameState.getPassword());
+        GameState expectedGameState = new GameState(true);
+        Assertions.assertEquals(expectedGameState, gameState);
+
+    }
+
+    @Test
+    void givenTheInputIsNotThePasswordEndTheGame(){
+        GameState intitialGameState = new GameState(false);
+        GameState gameState = Engine.stateUpdate(intitialGameState, "notpass"+intitialGameState.getPassword());
+        GameState expectedGameState = new GameState(false);
+        Assertions.assertEquals(expectedGameState, gameState);
 
     }
 }

@@ -9,9 +9,9 @@ public class Engine {
         return List.of("");
     }
 
-    public static GameState abcd(GameState oldState, String input){
-
-        return new GameState(true);
+    public static GameState stateUpdate(GameState oldState, String input){
+        boolean isEnded = oldState.getPassword().equals(input);
+        return new GameState(isEnded);
     }
 
 }
