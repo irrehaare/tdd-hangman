@@ -5,13 +5,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class EngineTest {
 
     @Test
     void givenGameIsEndedShouldReturnEndGameScreen() {
-        List<String> renderInput = Engine.createRenderInput(new GameState(true));
+        List<String> renderInput = Engine.createRenderInput();
         List<String> expected = List.of("///", "game over", "///");
         Assertions.assertIterableEquals(expected, renderInput);
     }
@@ -32,5 +30,18 @@ class EngineTest {
         GameState expectedGameState = new GameState(false);
         Assertions.assertEquals(expectedGameState, gameState);
 
+    }
+    @Test
+    void givenTheWordHasBeenCreatedShouldReturnTheSecondListInCreateRenderInput() {
+        List<String> renderInput = Engine.createRenderInput();
+        List<String> expectedInput = List.of("Hey Wok", "who are we hanging today?");
+        Assertions.assertEquals(expectedInput, renderInput);
+    }
+
+    @Test
+    void givenTheWordHasNotYetBeenCreatedShouldReturnTheFirstListInCreateRenderInput() {
+        List<String> renderInput = Engine.createRenderInput();
+        List<String> expectedInput = List.of("Hey Wok", "who are we hanging today?");
+        Assertions.assertNotEquals(expectedInput, renderInput);
     }
 }
